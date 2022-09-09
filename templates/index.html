@@ -1,8 +1,10 @@
-<Title>Etusivu</Title>
-<h1>Etusivu</h1>
-<p>{{ message }}</p>
-<ul>
-    {% for item in items %}
-    <li>{{ item }}
-    {% endfor %}
-</ul>
+<title>TMD</title>
+<h1>The Movie Database</h1>
+
+{% if session.username %}
+<p>You are logged in as {{ session.username }}</p>
+<a href="/logout">Log out</a>
+
+{% else %}
+<a href="/login">login</a>
+{% endif %}

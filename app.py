@@ -1,13 +1,8 @@
 from flask import Flask
-from flask import render_template
+from os import getenv
+
 
 app = Flask(__name__)
+app.secret_key = getenv("SECRET_KEY")
 
-@app.route("/")
-def index():
-    categories = ["Movies", "Actors", "Directors"]
-    return render_template("index.html", message="Tervetuloa!", items=categories)
-
-@app.route("/page/<int:id>")
-def page(id):
-    return "Tämä on sivu " + str(id)
+import routes
