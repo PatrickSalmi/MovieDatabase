@@ -1,5 +1,7 @@
+from crypt import methods
 from app import app
 import users
+import movies
 from flask import render_template, request, redirect, session
 
 @app.route("/")
@@ -33,3 +35,14 @@ def register():
 def logout():
     users.logout()
     return redirect("/")
+
+@app.route("/add_movie",methods=["GET", "POST"])
+def add_movie():
+    if request.method == "GET":
+        return render_template("add_movie.html")
+    if request.method == "POST":
+        name = request.form["name"]
+        release = request.form["release"]
+        director = request.form["director"]
+        movies.add_movie(name, release, director)
+        return redirect("/")
