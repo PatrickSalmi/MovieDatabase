@@ -7,11 +7,14 @@ def login(username, password):
     result = db.session.execute(sql, {"username":username})
     user = result.fetchone()
     if not user:
-        pass
-    else:
-        hash_value = user.password
-        if check_password_hash(hash_value, password):
-            session["username"] = username
+        return False
+        
+    hash_value = user.password
+    if check_password_hash(hash_value, password):
+        session["username"] = username
+        return True
+    
+    return False
 
 def register(username, password):
     hash_value = generate_password_hash(password)

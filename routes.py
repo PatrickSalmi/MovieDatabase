@@ -1,4 +1,3 @@
-from crypt import methods
 from app import app
 import users
 from flask import render_template, request, redirect, session
@@ -15,7 +14,8 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"] 
-        users.login(username, password)
+        if not users.login(username, password):
+            return render_template("error.html")
         return redirect("/")
 
 @app.route("/register",methods=["GET", "POST"])
