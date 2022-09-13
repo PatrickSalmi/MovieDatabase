@@ -46,3 +46,12 @@ def add_movie():
         director = request.form["director"]
         movies.add_movie(name, release, director)
         return redirect("/")
+
+@app.route("/movie/<name>",methods=["GET", "POST"])
+def movie(name):
+    movie_info = movies.movie(name)
+    return render_template("movie.html",
+                        id = movie_info[0],
+                        name = movie_info[1],
+                        release = movie_info[2],
+                        director = movie_info[3])
