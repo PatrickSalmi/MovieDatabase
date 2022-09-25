@@ -10,3 +10,8 @@ def movie(name):
     sql = "SELECT id, name, release, director FROM movies WHERE name=:name"
     result = db.session.execute(sql, {"name":name})
     return result.fetchone()
+
+def movie_list():
+    sql = "SELECT name FROM movies"
+    result = db.session.execute(sql)
+    return result.fetchall()

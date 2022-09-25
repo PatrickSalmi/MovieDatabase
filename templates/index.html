@@ -3,9 +3,21 @@
 
 {% if session.username %}
 <p>You are logged in as {{ session.username }}</p>
-<a href="/add_movie">Add a movie</a>
 <a href="/logout">Log out</a>
 
 {% else %}
 <a href="/login">login</a>
+<a href="/register">Create account</a>
+{% endif %}
+
+<h2>Movies:</h2>
+<hr>
+{% for movies in list %}
+<a href="/movie/{{movies.name}}">{{ movies.name }}</a>
+<hr>
+{% endfor %}
+
+{% if session.username %}
+<br>
+<a href="/add_movie">Add a movie</a>
 {% endif %}

@@ -6,7 +6,8 @@ from flask import render_template, request, redirect, session
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    list = movies.movie_list()
+    return render_template("index.html", list=list)
 
 @app.route("/login",methods=["GET", "POST"])
 def login():
