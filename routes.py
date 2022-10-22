@@ -1,4 +1,3 @@
-from crypt import methods
 from app import app
 import users
 import movies
@@ -28,7 +27,12 @@ def register():
 
     if request.method == "POST":
         username = request.form["username"]
+        if len(username) < 1 or len(username) > 15:
+            return render_template("error.html")
         password = request.form["password"]
+        password2 = request.form["password2"]
+        if password != password2 or len(password) < 6:
+            return render_template("error.html")
         users.register(username, password)
         return redirect("/")
 
@@ -56,3 +60,8 @@ def movie(name):
                         name = movie_info[1],
                         release = movie_info[2],
                         director = movie_info[3])
+
+@app.route("/watchlist")
+def watchlist():
+    list = movies.movie_list()
+    return render_template("watchlist.html", list=list)
