@@ -1,0 +1,14 @@
+<h1>Your watchlist</h1>
+
+{% if session.username %}
+
+<h2>Movies:</h2>
+<hr>
+{% for movies in list %}
+<a href="/movie/{{movies.name}}">{{ movies.name }}</a>
+<hr>
+{% endfor %}
+
+{% else %}
+<h2>You are not signed in</h2>
+{% endif %}
