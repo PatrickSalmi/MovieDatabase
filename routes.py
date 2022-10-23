@@ -47,6 +47,8 @@ def add_movie():
     if request.method == "GET":
         return render_template("add_movie.html", genres = genres)
     if request.method == "POST":
+        users.check_csrf()
+
         name = request.form["name"]
         release = request.form["release"]
         director = request.form["director"]
@@ -65,6 +67,8 @@ def movie(name):
                             director = movie_info[3],
                             genre = movie_info[4])
     if request.method == "POST":
+        users.check_csrf()
+
         movies.add_watchlist(movie_info[0])
         return redirect("/watchlist")
 
@@ -78,6 +82,8 @@ def review(name):
     if request.method =="GET":
         return render_template("review.html")
     if request.method == "POST":
+        users.check_csrf()
+        
         movie_info = movies.movie(name)
         stars = request.form["stars"]
         if stars < 0 or stars > 10:
