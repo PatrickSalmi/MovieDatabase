@@ -11,7 +11,8 @@ def login(username, password):
         
     hash_value = user.password
     if check_password_hash(hash_value, password):
-        session["username"] = username
+        session["user_id"] = user[0]
+        session["user_name"] = username
         return True
     
     return False
@@ -23,5 +24,8 @@ def register(username, password):
     db.session.execute(sql, {"username":username, "password":hash_value})
     db.session.commit()
 
+def user_id():
+    return session.get("user_id", 0)
+
 def logout():
-    del session["username"]
+    del session["user_id"]

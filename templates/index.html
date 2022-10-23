@@ -1,8 +1,8 @@
 <title>TMD</title>
 <h1>The Movie Database</h1>
 
-{% if session.username %}
-<p>You are logged in as {{ session.username }}</p>
+{% if session.user_id %}
+<p>You are logged in as {{ session.user_name }}</p>
 <a href="/logout">Log out</a>
 
 {% else %}
@@ -17,7 +17,7 @@
 <hr>
 {% endfor %}
 
-{% if session.username %}
+{% if session.user_id %}
 <br>
 <a href="/add_movie">Add a movie</a>
 <a href="/watchlist">Your watchlist</a>

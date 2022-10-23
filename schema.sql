@@ -22,4 +22,9 @@ CREATE TABLE genres(
     id SERIAL PRIMARY KEY,
     name TEXT,
     movieId INT
+);
+
+CREATE TABLE watchlists(
+    user_id INT,
+    movie_id INT
 )
