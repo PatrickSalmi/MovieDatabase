@@ -4,19 +4,9 @@ The database is used to store information about movies. Admins can add new movie
 
 Link to the app: [The Movie Database](http://tsoha-movie-database.herokuapp.com/)
 
-# Features at the moment
-- Account creation/login
-- Adding movies to the database
-- list of movies on the home page
-
 # Features
-
+- Creating account
 - Adding movies and information about them to the database
-- Sorting movies by there rating or number of reviews
-- Pages for actors to see all the movies they are in
-- Users able to leave reviews and ratings
-- Critics able to leave separate reviews and ratings
-- Users able to follow critics profiles
+- List of all added movies
+- Users able to leave reviews and ratings (not working currently)
 - Adding movies to a watchlist
-- Private/public watchlists
-- Following other users public watchlists
