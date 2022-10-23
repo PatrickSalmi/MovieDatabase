@@ -1,3 +1,9 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TMD</title>
+
+<body style="background-color: rgb(229, 238, 145);">
+<center>
+
 <h1>{{ name }}</h1>
 
 <p>Release year: {{ release }}</p>
@@ -5,10 +11,22 @@
 <p>Genre: {{ genre }}</p>
 
 {% if session.user_id %}
+<a href="/review/{{name}}">Leave a review</a>
+{% else %}
+<p>Log in to add review</p>
+{% endif %}
+<p></p>
+{% if session.user_id %}
 <form action="/movie/{{name}}" method="POST">
     <input type="submit" value="Add to watchlist">
 </form>
-
 {% else %}
 <p>Log in to add movies to your watchlist</p>
 {% endif %}
+
+<p></p>
+<a href="/">Go back</a>
+
+</center>
+</body>
+

@@ -22,6 +22,14 @@ CREATE TABLE watchlists(
     movie_id INT
 );
 
+CREATE TABLE reviews(
+    id SERIAL PRIMARY KEY,
+    user_id INT,
+    movie_id INT,
+    stars INTEGER,
+    comment TEXT
+);
+
 INSERT INTO genres (name) VALUES
 ('Action'),
 ('Drama'),

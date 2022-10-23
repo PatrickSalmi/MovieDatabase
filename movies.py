@@ -33,3 +33,9 @@ def add_watchlist(movieid):
     sql = "INSERT INTO watchlists (user_id, movie_id) VALUES (:user_id, :movie_id)"
     db.session.execute(sql, {"user_id":userid, "movie_id":movieid})
     db.session.commit()
+
+def reviews(movie_id, stars, comment):
+    userid = users.user_id()
+    sql = "INSERT INTO reviews (user_id, movie_id, stars, comment) VALUES (:user_id, :movie_id, :stars, :comment)"
+    db.session.execute(sql, {"user_id":userid, "movie_id":movie_id, "stars":stars, "comment":comment})
+    db.session.commit()
