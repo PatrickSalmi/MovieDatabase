@@ -1,6 +1,8 @@
 <h1>{{ name }}</h1>
 
 <p>Release year: {{ release }}</p>
+<p>Director: {{ director }}</p>
+<p>Genre: {{ genre }}</p>
 
 {% if session.user_id %}
 <form action="/movie/{{name}}" method="POST">

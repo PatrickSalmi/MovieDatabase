@@ -7,5 +7,14 @@
 <input type="int" name="release"></p>
 <p>Director:
 <input type="text" name="director"></p>
+
+<label for="genre">Select a genre:</label>
+<select type="text" name="genre">
+    {% for genre in genres %}
+    <option value="{{genre.name}}">{{ genre.name }}</option>
+    {% endfor %}
+</select>
+
+<p></p>
 <input type="submit" value="Add">
 </form>

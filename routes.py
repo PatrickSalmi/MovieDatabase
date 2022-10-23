@@ -15,7 +15,7 @@ def login():
 
     if request.method == "POST":
         username = request.form["username"]
-        password = request.form["password"] 
+        password = request.form["password"]
         if not users.login(username, password):
             return render_template("error.html")
         return redirect("/")
@@ -43,13 +43,15 @@ def logout():
 
 @app.route("/add_movie",methods=["GET", "POST"])
 def add_movie():
+    genres = movies.genres()
     if request.method == "GET":
-        return render_template("add_movie.html")
+        return render_template("add_movie.html", genres = genres)
     if request.method == "POST":
         name = request.form["name"]
         release = request.form["release"]
         director = request.form["director"]
-        movies.add_movie(name, release, director)
+        genre = request.form["genre"]
+        movies.add_movie(name, release, director, genre)
         return redirect("/")
 
 @app.route("/movie/<name>",methods=["GET", "POST"])
@@ -60,7 +62,8 @@ def movie(name):
                             id = movie_info[0],
                             name = movie_info[1],
                             release = movie_info[2],
-                            director = movie_info[3])
+                            director = movie_info[3],
+                            genre = movie_info[4])
     if request.method == "POST":
         movies.add_watchlist(movie_info[0])
         return redirect("/watchlist")
